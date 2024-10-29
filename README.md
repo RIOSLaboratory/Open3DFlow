@@ -108,10 +108,10 @@ In our study, two dies are stacked in a F2F configuration, which means that thei
 
 |Name|Affiliation|
 |:--:|:----------:|
-| Yifei Zhu (zhuyf20@mails.tsinghua.edu.cn)| PhD Student, RIOS Lab, Tsinghua-Berkeley Shenzhen Institute, Tsinghua University|
+| Zhangxi Tan (xtan@rioslab.org)| Doctor, RIOS Lab, Tsinghua-Berkeley Shenzhen Institute, Tsinghua University|
 | Weiwei Chen (weiwei.c@rioslab.org)| Scientist, RIOS Lab, Tsinghua-Berkeley Shenzhen Institute, Tsinghua University|
 | Lei Ren (ren@rioslab.org)| Scientist, RIOS Lab, Tsinghua-Berkeley Shenzhen Institute, Tsinghua University|
-| Zhangxi Tan (xtan@rioslab.org)| Doctor, RIOS Lab, Tsinghua-Berkeley Shenzhen Institute, Tsinghua University|
+| Yifei Zhu (zhuyf20@mails.tsinghua.edu.cn)| PhD Student, RIOS Lab, Tsinghua-Berkeley Shenzhen Institute, Tsinghua University|
 <!-- | Xieyuan Wu (wuxy23@mails.tsinghua.edu.cn)| RIOS Lab, Tsinghua-Berkeley Shenzhen Institute, Tsinghua University|
 | Yucheng Wang (wangyc23@mails.tsinghua.edu.cn)| RIOS Lab, Tsinghua-Berkeley Shenzhen Institute, Tsinghua University| -->
 
