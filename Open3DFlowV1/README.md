@@ -1,11 +1,10 @@
-![image](https://github.com/user-attachments/assets/49f7c441-a078-4e94-ad0e-b2b02b045055)
-
 
 # Open3DFlow
 
 
 Amid the escalating need for high-performance, low-power, and densely integrated electronic systems, 3D-ICs emerge as a promising "more than Moore'' integration solution. Nevertheless, the scarcity of specialized EDA tools and standardized design flows tailored for 3D chiplets hinders silicon innovation. To address this gap, we propose a 3D RISC-V processor, mimicking AMD's 3D V-cache architecture. To realize this architecture, we develop 'Open3DFlow', an open-source 3D IC design platform that leverages existing openEDA tools while incorporating tailored abstractions and customizations optimized for 3D chiplet designs. Besides OpenROAD, we also integrate other open tools to enable Through Silicon Via (TSV) modeling, thermal analysis, and signal integrity (SI) assessments. Our CPU consists of two tiers: a cache die and a logic die, stacked face-to-face (F2F) using different processes. The interconnects converge at the central bonding layer, where the bonding pads are located. Our ambition is to establish a fully open-source realization of cutting-edge technologies, not only to facilitate the resolution of future challenges within this platform but also to pave the way for the exploration of novel packaging paradigms.
-![image](https://github.com/user-attachments/assets/b0cd0a0a-f882-4eba-8048-78a5c5c3380f)
+
+![image](https://github.com/user-attachments/assets/98607fbb-89c5-47cf-af92-baddd38d7349)
 
 
 ## 1.   Introduction and Spec
@@ -19,7 +18,8 @@ The technological trend can be roughly divided into four stages:
 
 As depicted in the following diagram, the trend consistently leans towards achieving greater integration and shorter interconnection distances:
 
-![image](https://github.com/user-attachments/assets/46826f07-f490-40d2-a25a-42a753a4a8d2)
+![image](https://github.com/user-attachments/assets/1983fc7a-2a19-48a7-919a-d8cbe3041aba)
+
 
 Currently, the 3D IC flow faces several limitations. Primarily, it relies heavily on 2D tools and lacks comprehensive thermal analysis as well as power and signal integrity (SI) assessments. And because there are knowledge gaps between chip design and packaging. Modeling for 3D items such as TSVs and bonding pads hardly exists in IC back-end processes. Additionally, due to the immature and closed nature of existing 3D design EDA tools, future designs face challenges in integrating with large models and cloud platforms. Commercial licensing costs and limitations on processor scalability in cloud environments further complicate the matter.
 
@@ -39,13 +39,15 @@ We employ a five-stage pipelined RISC-V CPU equipped with an L1 cache to demonst
 - PDK for cache die: GlobalFoundries 180nm (GF180)
 - Connection methods: bonding pads for hybrid bonding & TSV
 
-![image](https://github.com/user-attachments/assets/72cbbdb7-bb9e-40c8-88f5-b368f6930650)
+![image](https://github.com/user-attachments/assets/b0635530-9a2e-40b2-b3b9-9ef82b50f6ed)
+
 
 ## 2. EDA Toolchain in Open3DFlow
 ### 2.1 Open3DFlow Infrastructure
 ’Open3DFlow‘ incorporates a range of open EDA tools tailored for distinct stages of the design process. As shown in the following figure：
 
-![image](https://github.com/user-attachments/assets/fbb89374-6db0-4a29-a7ea-0e63d83505a6)
+![image](https://github.com/user-attachments/assets/fb551f11-9b09-47c2-83f0-0881f032ddc5)
+
 
 
 Within green boxes are existing open-source tools/algorithms such as Yosys and RePlace, which have been integrated into OpenRoad. The purple boxes represent the new open-source EDA tools we add to our design process. While the red boxes highlight our self-developed modules: 
@@ -58,7 +60,8 @@ To achieve this design, we developed a platform called 'Open3DFlow'. 'Open3DFlow
 
 The overall workflow of 'Open3DFlow' is depicted in this figure:
 
-![image](https://github.com/user-attachments/assets/0b069b3b-c3c1-438c-a267-60fdbf3336f0)
+![image](https://github.com/user-attachments/assets/cd7443e3-5036-4cbb-876b-36470e41c2db)
+
 
 In the initial phase, we synthesize the RTL codes of the processor and V-cache to generate netlists respectively. They are synthesized using distinct PDKs.
 
@@ -79,9 +82,12 @@ In the last two steps, we perform thermal simulation and SI analysis based on ch
 ### 3.1 Chiplet Consideration
 There are some typical structures for 3D processors. As depicted in the following figure:
 
-![image](https://github.com/user-attachments/assets/dbf4aeec-29a6-4029-b6bb-dfdfa0205aa5)
+![image](https://github.com/user-attachments/assets/9d7c99d8-3601-4f36-9ddf-4a5d33b059f3)
+
 
 (a) depicts combinations of multiple packages; (b) represents 2.5D IC, applying passive or active interposers; (c) illustrates for DRAMs on logic dies; (d) stacks one logic circuit on another; and in (d), SRAMs are positioned beneath the logic but for (f), the logic is on the upper side. 
+
+说明：sram与logic共用interposer，以及hbm在logic上的，都是学生瞎写的
 
 However, modern 3D processor architectures often combine multiple stacking approaches. The prevailing trend in 3D architecture evolution is towards increased density integration, reduced micro-bumps and TSV pitches, as well as shorter chiplet distances. For instance, AMD's 3D-Vcache does not follow the traditional approach of placing caches alongside the processor; instead, it stacks additional cache layers on top of the CPU. This architecture enables AMD to compress more cache without fabricating larger CPUs, resulting in improved speed and power efficiency in gaming applications. To achieve broader bandwidth and faster transmission speeds, the hybrid bonding technology even eliminates bumps. In our design, we select the "CPU + Caches" structure for experimentation. We aim to develop a fully open-source 3D-Vcache structure utilizing openEDA tools and openPDKs. Our aspiration is also to establish a platform that can be flexibly extended to other stacking modes in the future.
 
@@ -89,19 +95,22 @@ However, modern 3D processor architectures often combine multiple stacking appro
 The L1 cache is composed by concatenating 4 GF180 256*8-SRAM  macros, utilizing a 7-bit address for both reading and writing operations. As shown in this figure:
 
 
-![image](https://github.com/user-attachments/assets/9113eff9-1c2c-4f87-a6a8-7c3559287203)
+![image](https://github.com/user-attachments/assets/1c73ccfe-bbc4-492f-89a5-21aab7abeb26)
+
 
 All signals related to this cache die, excluding the clock signal, establish direct communication with the logic die via bonding pads and TSVs. The floorplan for the macros is manually crafted. The two ties possess their own independent power supply networks, but converge on the logic die. Detailed insights into the back-end design are outlined in the subsequent sections.
 
 ### 3.3  RISC-V CPU with 3D Stacking SRAM
 The overall stacked architecture is illustrated as:
 
-![image](https://github.com/user-attachments/assets/37b821aa-cee4-4ab1-9a09-eafb05a90f58)
+![image](https://github.com/user-attachments/assets/f771da4e-beed-485c-bed8-66a92d562bde)
+
 
 In our study, two dies are stacked in a F2F configuration, which means that their corresponding connection signal points converge onto the same bonding pads on the bonding layer. Additionally, the TSVs are via-last fabricated, where they reach the topmost layer of the top die and penetrate through all the metal layers of the sub die. Finally, the entire 3D chip is mounted on the substrate using flip-chip packaging with solder bumps.
 
 </br>
 
+### 
 
 
 #### Team Members
@@ -120,24 +129,6 @@ In our study, two dies are stacked in a F2F configuration, which means that thei
 </br>
 
 </br>
-
-
-## About RIOS Lab
-
-![image](https://github.com/riosmpw/OpenRPDK28/assets/109063674/6aae13c6-50a5-40c3-9a4e-ed4c79d41c20)
-
-
-**Ecosystem Wants to be Free**
-
-By David A. Patterson · Director of RIOS Lab
-
-**RISC-V International Open Source Laboratory** (RIOS Lab) is a Shenzhen-based research facility focused on computer system architecture, supported by the Tsinghua-Berkeley Shenzhen Research Institute. As an Open Source and Nobel Prize Laboratory, RIOS Lab promotes open-source innovation and collaboration. Our philosophy is that the computer architecture ecosystem should be free for all to access and build upon.
-
-In November 2019, RIOS Lab was officially unveiled. Under the leadership of 2017 A.M. Turing Award winner Prof. David A. Patterson and operational support from TBSI,  RIOS Lab will conduct cutting-edge research in RISC-V hardware and software technology. Patterson first proposed the Reduced Instruction Set Computer (RISC), an open and free instruction set architecture enabling a new era of processor innovation through open standard collaboration. Released in 2010, the latest Fifth Generation RISC has gained worldwide attention.
-
-The name for the lab RIOS is also inspired by the Spanish word for “rivers.” It symbolizes the flow of information from many sources, coming together to create a whole that is greater than the sum of its parts.
-
-
 
 
 
