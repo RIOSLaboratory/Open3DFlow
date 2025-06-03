@@ -48,7 +48,7 @@ We employ a five-stage pipelined RISC-V CPU equipped with an L1 cache to demonst
 
 ![image](https://github.com/user-attachments/assets/fb551f11-9b09-47c2-83f0-0881f032ddc5)
 
-说明：sram与logic共用interposer的那个是学生瞎写的
+
 
 Within green boxes are existing open-source tools/algorithms such as Yosys and RePlace, which have been integrated into OpenRoad. The purple boxes represent the new open-source EDA tools we add to our design process. While the red boxes highlight our self-developed modules: 
 1. Pad placer generates a bonding layer, placing bonding pads and ensuring alignment between two tiles; 
@@ -86,6 +86,8 @@ There are some typical structures for 3D processors. As depicted in the followin
 
 
 (a) depicts combinations of multiple packages; (b) represents 2.5D IC, applying passive or active interposers; (c) illustrates for DRAMs on logic dies; (d) stacks one logic circuit on another; and in (d), SRAMs are positioned beneath the logic but for (f), the logic is on the upper side. 
+
+说明：sram与logic共用interposer的那个是学生瞎写的
 
 However, modern 3D processor architectures often combine multiple stacking approaches. The prevailing trend in 3D architecture evolution is towards increased density integration, reduced micro-bumps and TSV pitches, as well as shorter chiplet distances. For instance, AMD's 3D-Vcache does not follow the traditional approach of placing caches alongside the processor; instead, it stacks additional cache layers on top of the CPU. This architecture enables AMD to compress more cache without fabricating larger CPUs, resulting in improved speed and power efficiency in gaming applications. To achieve broader bandwidth and faster transmission speeds, the hybrid bonding technology even eliminates bumps. In our design, we select the "CPU + Caches" structure for experimentation. We aim to develop a fully open-source 3D-Vcache structure utilizing openEDA tools and openPDKs. Our aspiration is also to establish a platform that can be flexibly extended to other stacking modes in the future.
 
