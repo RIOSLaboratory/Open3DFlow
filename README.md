@@ -48,7 +48,7 @@ We employ a five-stage pipelined RISC-V CPU equipped with an L1 cache to demonst
 
 ![image](https://github.com/user-attachments/assets/fb551f11-9b09-47c2-83f0-0881f032ddc5)
 
-
+说明：sram与logic共用interposer的那个是学生瞎写的
 
 Within green boxes are existing open-source tools/algorithms such as Yosys and RePlace, which have been integrated into OpenRoad. The purple boxes represent the new open-source EDA tools we add to our design process. While the red boxes highlight our self-developed modules: 
 1. Pad placer generates a bonding layer, placing bonding pads and ensuring alignment between two tiles; 
