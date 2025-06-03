@@ -108,6 +108,13 @@ In our study, two dies are stacked in a F2F configuration, which means that thei
 
 </br>
 
+### 4  Versions
+
+|Version|Description|
+|:--:|:----------:|
+| V1 | initial version of Open3DFlow, only support basic TSV model, not accurcy in thermal and routing|
+| V2 |                      |
+|    |                      |
 
 
 #### Team Members
