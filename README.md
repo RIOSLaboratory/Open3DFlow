@@ -4,6 +4,8 @@
 Open3DFlow is a open source 3D IC design flow. This work starts in 2022. And now we are working for the second generation Open3DFlow.
 
 We hope this work could accelerate the development of 3D IC and the open source education. And make an effort on open source EDA tools. 
+![image](https://github.com/user-attachments/assets/0baa25c6-62ad-4b42-8ac3-290e81a81636)
+
 
 Amid the escalating need for high-performance, low-power, and densely integrated electronic systems, 3D-ICs emerge as a promising "more than Moore'' integration solution. Nevertheless, the scarcity of specialized EDA tools and standardized design flows tailored for 3D chiplets hinders silicon innovation. To address this gap, we propose a 3D RISC-V processor, mimicking AMD's 3D V-cache architecture. To realize this architecture, we develop 'Open3DFlow', an open-source 3D IC design platform that leverages existing openEDA tools while incorporating tailored abstractions and customizations optimized for 3D chiplet designs. 
 
